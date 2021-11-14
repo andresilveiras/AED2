@@ -26,10 +26,10 @@ unsigned long long int conquista (int v[], int temp[], int esq , int quebra, int
 /* ************************** */
 
 unsigned long long int qtdswap_merge_sort (int v[], int n){
-    
+
     /* vetor temporario que contera o vetor v ordenado */
     /* infelizmente nao consegui pensar em uma maneira de contar inversoes sem ordenar */
-    int* temp = (int*)malloc(sizeof(int) * n); 
+    int* temp = (int*)malloc(sizeof(int) * n);
 
     /* para fazer a contagem e necessario dividir e conquistar :) */
     unsigned long long int qtdswap = divisao(v, temp, 0, n-1);
@@ -79,7 +79,7 @@ return qtd_inversoes;
 /* **************** */
 
 unsigned long long int conquista (int v[], int temp[], int esq, int quebra, int dir){
-    
+
     unsigned long long int qtd_inversoes = 0;
 
     /* definicao de indices moveis para os subvetores */
@@ -91,14 +91,14 @@ unsigned long long int conquista (int v[], int temp[], int esq, int quebra, int 
     int i_posicao = esq;
 
     while(i_v1 <= quebra-1 && i_v2 <= dir){
-        
+
         /* compara se o valor do subvetor da esquerda e menor que o subvetor da direita */
         /* caso positivo: passa para o proximo valor incrementando os indices, nao aumenta a qtd de inversoes */
         if(v[i_v1] <= v[i_v2]){
-            temp[i_posicao] = v[i_v1]; 
+            temp[i_posicao] = v[i_v1];
             i_posicao++;
-            i_v1++;  
-        } 
+            i_v1++;
+        }
 
         /* se o valor do subvetor da esquerda eh maior que o subvetor da direita, acontece a inversao */
         else{ /* so acontece quando todos da esquerda estao ordenados */
@@ -136,7 +136,7 @@ unsigned long long int conquista (int v[], int temp[], int esq, int quebra, int 
 /* *********** */
 
 int main(){
-	
+
 	/************************************/
     // ESTRUTURA DO ARQUIVO:
 	// Entrada:
@@ -151,14 +151,14 @@ int main(){
     char nomedoarquivo[10];
     scanf("%s",nomedoarquivo);
     entrada=fopen(nomedoarquivo, "r");
-	
+
     /* variaveis de operacao */
     int n, i;
 	unsigned long long int qtdinversoes;
-	
+
     /* le o primeiro int da linha do arquivo (qtd de itens) */
     fscanf(entrada, "%d", &n);
-    
+
 	/* preenche um vetor com os valores de entrada */
     int vetorentrada[n];
 
@@ -170,7 +170,7 @@ int main(){
     qtdinversoes = qtdswap_merge_sort(vetorentrada, n);
 
     /* impressao do resultado */
-	printf("%lld\n", qtdinversoes);     
+	printf("%lld\n", qtdinversoes);
 
     fclose(entrada);
     return 0; // fim da funcao MAIN
